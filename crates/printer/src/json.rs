@@ -775,9 +775,7 @@ impl<'p, 's, M: Matcher, W: io::Write> Sink for JSONSink<'p, 's, M, W> {
                     let msg = jsont::Message::Match(jsont::Match {
                         path: self.path,
                         lines: line,
-                        line_number: mat
-                            .line_number()
-                            .map(|n| n + line_num),
+                        line_number: mat.line_number().map(|n| n + line_num),
                         absolute_offset: mat.absolute_byte_offset()
                             + line_start as u64,
                         submatches: submatches.as_slice(),
